@@ -46,6 +46,7 @@ class WorkpieceSearch extends Workpiece
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 7],
         ]);
 
         $this->load($params);
