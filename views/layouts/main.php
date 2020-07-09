@@ -38,9 +38,24 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Gii', 'url' => ['/gii']],
+            ['label' => 'Workpiece', 'url' => ['/workpiece/index']],
+            //dropdown menu
+            /*
+            [
+                'label' => 'Inventory',
+                'items' => [
+                    '<li class="dropdown-header">Manage Workpieces</li>',
+                    ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+                    ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+                    '<li class="divider"></li>',
+                ]
+            ],
+            */
+            ['label' => 'Category', 'url' => ['/category/index']],
+            //['label' => 'Home', 'url' => ['/site/index']],
+            //['label' => 'About', 'url' => ['/site/about']],
+            //['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

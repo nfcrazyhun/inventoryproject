@@ -1,10 +1,15 @@
 <?php
 
+/* Include debug functions */
+require_once(__DIR__.'/functions.php');
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name'=>'Inventory Manager',    //change app name
+    'defaultRoute' => 'workpiece/index', // set custom default root
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
