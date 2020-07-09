@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'tableOptions' => ['class' => 'table table-bordered'],
         'rowOptions' => function ($model) { //coloring the rows
-            if (!empty($model->histories)) {
+            if ( $model->getHistories()->count() > 0 ) {
                 // if stock > min >> green
                 if ($model->in_stock > $model->min_stock) { return ['class' => 'alert alert-success']; }
 
