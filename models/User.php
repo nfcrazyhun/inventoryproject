@@ -4,12 +4,22 @@ namespace app\models;
 
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
+    /**
+     * Set custom table name
+     */
+    public static function tableName()
+    {
+        return 'users';
+    }
+
     public $id;
     public $username;
+    public $email;
     public $password;
     public $authKey;
     public $accessToken;
 
+    /*
     private static $users = [
         '100' => [
             'id' => '100',
@@ -26,6 +36,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'accessToken' => '101-token',
         ],
     ];
+    */
 
 
     /**
@@ -81,6 +92,14 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public function getAuthKey()
     {
         return $this->authKey;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
