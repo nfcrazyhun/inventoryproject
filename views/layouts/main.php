@@ -38,11 +38,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Gii', 'url' => ['/gii']],
-            ['label' => 'Workpiece', 'url' => ['/workpiece/index']],
-            //dropdown menu
+            //['label' => 'Gii', 'url' => ['/gii']],
+
+            //if not quest
+            (!Yii::$app->user->isGuest) ? (
+                ['label' => 'Workpiece', 'url' => ['/workpiece/index']]
+            ) : '',
+            (!Yii::$app->user->isGuest) ? (
+                ['label' => 'Category', 'url' => ['/category/index']]
+            ) : '',
+
             /*
-            [
+            [ //dropdown menu
                 'label' => 'Inventory',
                 'items' => [
                     '<li class="dropdown-header">Manage Workpieces</li>',
@@ -52,7 +59,6 @@ AppAsset::register($this);
                 ]
             ],
             */
-            ['label' => 'Category', 'url' => ['/category/index']],
             //['label' => 'Home', 'url' => ['/site/index']],
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],

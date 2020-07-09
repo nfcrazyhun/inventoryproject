@@ -8,6 +8,7 @@ use Yii;
 use app\models\Workpiece;
 use app\models\search\WorkpieceSearch;
 use yii\base\DynamicModel;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -30,6 +31,20 @@ class WorkpieceController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+            //set access only for authenticated users
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index','view','create','update','delete','deposit','withdraw'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index','view','create','update','delete','deposit','withdraw'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+
         ];
     }
 
