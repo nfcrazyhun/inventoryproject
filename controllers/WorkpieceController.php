@@ -54,7 +54,7 @@ class WorkpieceController extends Controller
      */
     public function actionIndex()
     {
-        //todo: user form db maybe, filtering records by color
+        //todo: user form db maybe, filtering records by color by modifing WorkPieceController search()-> add new arguments.
         $searchModel = new WorkpieceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
