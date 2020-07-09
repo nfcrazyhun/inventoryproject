@@ -17,7 +17,6 @@ class m200709_133940_create_users_table extends Migration
             'username' => $this->string()->unique(),
             'email' => $this->string()->unique(),
             'password' => $this->string(),
-            'authKey' => $this->string(),
             'created_at' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime(),
         ]);
