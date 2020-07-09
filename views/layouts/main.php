@@ -35,47 +35,29 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
+    $menuItems = array();
+    //$items[] = ['label' => 'Gii', 'url' => ['/gii']]; //for development
+    if (Yii::$app->user->isGuest) { //show depending on User is guest or not
+        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+    } else {
+        $menuItems[] = ['label' => 'Workpiece', 'url' => ['/workpiece/index']];
+        $menuItems[] = ['label' => 'Category', 'url' => ['/category/index']];
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            //['label' => 'Gii', 'url' => ['/gii']],
-
-            //if not quest
-            (!Yii::$app->user->isGuest) ? (
-                ['label' => 'Workpiece', 'url' => ['/workpiece/index']]
-            ) : '',
-            (!Yii::$app->user->isGuest) ? (
-                ['label' => 'Category', 'url' => ['/category/index']]
-            ) : '',
-
-            /*
-            [ //dropdown menu
-                'label' => 'Inventory',
-                'items' => [
-                    '<li class="dropdown-header">Manage Workpieces</li>',
-                    ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
-                    ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
-                    '<li class="divider"></li>',
-                ]
-            ],
-            */
-            //['label' => 'Home', 'url' => ['/site/index']],
-            //['label' => 'About', 'url' => ['/site/about']],
-            //['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $menuItems,
     ]);
+
     NavBar::end();
     ?>
 
