@@ -40,7 +40,7 @@ class WorkpieceSearch extends Workpiece
      */
     public function search($params)
     {
-        $query = Workpiece::find();
+        $query = Workpiece::find()->with('category');   //eager load with category relationship
 
         // add conditions that should always apply here
 
