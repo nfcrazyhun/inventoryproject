@@ -21,6 +21,33 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Workpiece', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+
+    <!-- $filterCondition -->
+    <div class="panel panel-default">
+        <div class="panel-heading">Filter</div>
+        <div class="panel-body">
+
+            <?= Html::beginForm(['workpiece/index'], 'POST') ?>
+
+            <!-- a condition -->
+            <div class="form-group">
+                <label for="color">Choose a color:</label>
+                <select class="form-control"
+                        name="color"
+                        id="color">
+                    <option value="0">All</option>
+                    <option value="1">Green</option>
+                    <option value="2">Red</option>
+                    <option value="3">Orange</option>
+                </select>
+            </div>
+
+            <?php echo Html::submitButton('Filter', ['class' => 'btn btn-primary']) ?>
+            <?= Html::endForm() ?>
+
+        </div>
+    </div>
+
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

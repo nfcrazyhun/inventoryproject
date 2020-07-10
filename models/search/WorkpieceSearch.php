@@ -2,6 +2,7 @@
 
 namespace app\models\search;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Workpiece;
@@ -36,11 +37,21 @@ class WorkpieceSearch extends Workpiece
      *
      * @param array $params
      *
+     * @param null|integer $filterCondition
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params,$filterCondition=null)
     {
+
         $query = Workpiece::find()->with('category');   //eager load with category relationship
+
+        if ($filterCondition > 0){
+            if ($filterCondition == 1) { $query->where('in_stock > min_stock'); }   //green
+            if ($filterCondition == 2) { $query->where('in_stock < min_stock'); }   //red
+            if ($filterCondition == 3) { $query->with('histories'); }                        //orange
+        }
+
+        //dd($query->getRawSql());
 
         // add conditions that should always apply here
 
