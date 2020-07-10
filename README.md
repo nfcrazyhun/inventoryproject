@@ -3,7 +3,7 @@
 ## Quick Start: Clone this repository and install the dependencies.
 
 ```
-$ git clone 
+$ git clone https://github.com/nfcrazyhun/inventoryproject.git
 ```
 ```
 $ composer install
