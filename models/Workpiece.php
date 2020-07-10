@@ -34,7 +34,7 @@ class Workpiece extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id'], 'required'],
+            [['category_id','name'], 'required'],
             [['category_id', 'in_stock', 'min_stock'], 'integer'],
             [['min_stock'], 'required'],
             [['name'], 'string', 'max' => 255],
